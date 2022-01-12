@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<script>
+			!function(e, t){
+				console.log("Loading client...");
+				var n = "a.wasm.js";
+				if(!e.WebAssembly){
+					n = "a.js"
+				}
+				console.log("Script set to " + n);
+				var o = t.createElement("script");
+				o.async = !0, o.type = "text/javascript", o.src = n, o.onerror = function(t) {
+					console.error("Script Error"), console.error(t), setTimeout(function() {
+						e.location.reload(!0)
+					}, 3e3)
+				};
+				var r = t.getElementsByTagName("script")[0];
+				r.parentNode.insertBefore(o, r)
+			}(window, document);
+		</script>
+		<script>
+			setTimeout(function(){
+				let _createTransaction = Module.cwrap('createTransaction', 'string', ['array'])
+
+				window.createTransaction = function(data) {
+					const encoder = new TextEncoder()
+					const view = encoder.encode(JSON.stringify(data))
+					return JSON.parse(_createTransaction(view))
+				}
+
+				let _generateKeyPair = Module.cwrap('generateKeyPair', 'string', null);
+				window.generateKeyPair = function() {
+					return JSON.parse(_generateKeyPair());
+				}
+			}, 100)
+		</script>
+		<script src="./renderer.js"></script>
+		<button id="button">HELLO</button>
+	</body>
+</html>
