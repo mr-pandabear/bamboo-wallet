@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">		
+	</head>
+	<body>
+		<script src="./wallet.js"></script>
+		<div class='header'>
+            <h1>Wallet Details</h1>
+            <div class="ux-item">
+                <span style="font-size:12px">ADDRESS</span>
+                <div>
+                    <span id="walletAddress">None</span>
+                    <button id="copyButton" style="float:right">COPY</button>
+                </div>
+            </div>
+            <div class="ux-item">
+                <span style="font-size:12px">BALANCE</span>
+                <div>
+                    <span id="walletTotal">Loading...</span>
+                    <button id="refreshWallet" style="float:right">REFRESH</button>
+                </div>
+            </div>
+		</div>
+        <div id="sendButton" class="med-button">Send Funds ›</div>
+        <div id="backButton" class="med-button">‹ Log Out</div>
+	</body>
+</html>

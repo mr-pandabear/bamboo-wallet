@@ -1,0 +1,116 @@
+/* styles.css */
+
+/* Add styles here to customize the appearance of your app */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 8px;
+}
+
+.info {
+    background-color: rgb(245, 240, 185);
+    border-color: 1px solid rgb(72, 73, 13);
+    padding: 14px;
+    margin: 12px;
+    border-radius: 4px;
+}
+
+.ux-item {
+    background: linear-gradient(0deg, rgba(198,198,198,1) 0%, rgba(255,255,255,1) 100%);
+    border: 1px solid rgb(99, 99, 99);
+    padding: 12px;
+    margin: 12px;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+#addressStatus {
+    color: red;
+    font-weight: bold;
+}
+
+#walletTotal {
+    font-size: 32px;
+}
+
+.info-small {
+    font-size: 12px;
+    margin: 3px;
+}
+
+.big-button {
+    margin: 16px;
+    padding: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background: rgb(210, 243, 126);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.big-button:hover {
+    background: rgb(181,255,0);
+}
+
+.med-button {
+    margin: 16px;
+    padding: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background: rgb(210, 243, 126);
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100px;
+    float: right;
+}
+
+.med-button:hover {
+    background: rgb(181,255,0);
+}
+
+
+.button {
+    background: rgb(181,255,0);
+    font-weight:bolder;
+    border-radius: 12px;
+    padding: 12px;
+    width: 100px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.form-field {
+    width: 550px;
+    border-radius: 8px;
+    border-color: rgb(197, 197, 197);
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid rgb(214, 214, 214);
+    margin-bottom: 10px;
+    margin-left: 12px;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

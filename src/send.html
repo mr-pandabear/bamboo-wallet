@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">		
+	</head>
+	<body>
+		<script>
+			!function(e, t){
+				console.log("Loading client...");
+				var n = "a.wasm.js";
+				if(!e.WebAssembly){
+					n = "a.js"
+				}
+				console.log("Script set to " + n);
+				var o = t.createElement("script");
+				o.async = !0, o.type = "text/javascript", o.src = n, o.onerror = function(t) {
+					console.error("Script Error"), console.error(t), setTimeout(function() {
+						e.location.reload(!0)
+					}, 3e3)
+				};
+				var r = t.getElementsByTagName("script")[0];
+				r.parentNode.insertBefore(o, r)
+			}(window, document);
+		</script>
+		<script>
+			setTimeout(function(){
+				let _createTransaction = Module.cwrap('createTransaction', 'string', ['array'])
+
+				window.createTransaction = function(data) {
+					const encoder = new TextEncoder()
+					const view = encoder.encode(JSON.stringify(data))
+					return _createTransaction(view);
+				}
+			}, 100)
+		</script>
+		<script src="./send.js"></script>
+		<div class='header'>
+			<h1>Send Funds</h1>
+			<table>
+				<tr>
+					<td>
+						FROM
+					</td>
+					<td>
+						<input id="fromAddress" class="form-field" readonly="true"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						TO
+					</td>
+					<td>
+						<input id="toInput" class="form-field" placeholder="Enter receivers address"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						AMOUNT
+					</td>
+					<td>
+						<input id="amountInput" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-field" placeholder="Enter amount to send" value="0"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						FEE
+					</td>
+					<td>
+						<input id="feeInput" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  class="form-field" placeholder="Enter amount to send" value="0"/>
+					</td>
+				</tr>
+
+			</table>
+			<div class="ux-item">
+                <span style="font-size:12px">AMOUNT TO SEND</span>
+                <div>
+                    <span id="amountTotal">0.00 BMB </span>
+                </div>
+            </div>
+
+			<div class="ux-item">
+                <span style="font-size:12px">FEES</span>
+                <div>
+                    <span id="finalTotal">0.00 BMB </span>
+                </div>
+            </div>
+			<div class="ux-item">
+                <span style="font-size:12px">RECEIVER ADDRESS<span id="addressStatus"> [INVALID] </span>:</span>
+                <div>
+                    <span id="toAddress"></span>
+                </div>
+            </div>
+            
+		</div>
+        <div id="sendButton" class="med-button">Send ›</div>
+		<div id="backButton" class="med-button">‹ Go Back</div>
+	</body>
+</html>
