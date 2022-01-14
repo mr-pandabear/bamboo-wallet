@@ -28,7 +28,7 @@ function createWindow () {
     x:0,
     y:0,
     width: 800,
-    height: 400,
+    height: 420,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
@@ -50,7 +50,7 @@ function createWindow () {
 /* Show the home page */
 function home() {
   sendCurrentState(GLOBAL_WINDOW.loadFile('src/index.html'));
-  GLOBAL_WINDOW.setSize(800, 400);
+  GLOBAL_WINDOW.setSize(800, 420);
 }
 
 /* Show the status page */
@@ -63,13 +63,13 @@ function status() {
       GLOBAL_WINDOW.webContents.send('tx-status', 'Received response: ' + JSON.stringify(response.data));
     });
   });
-  GLOBAL_WINDOW.setSize(800, 275);
+  GLOBAL_WINDOW.setSize(800, 290);
 }
 
 /* Show the wallet page */
 function wallet() {
   sendCurrentState(GLOBAL_WINDOW.loadFile('src/wallet.html'))
-  GLOBAL_WINDOW.setSize(800, 400);
+  GLOBAL_WINDOW.setSize(800, 420);
 }
 
 /* Show the send funds page */
