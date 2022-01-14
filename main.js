@@ -24,6 +24,7 @@ function sendCurrentState(loadPromise) {
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    autoHideMenuBar: true,
     x:0,
     y:0,
     width: 800,
@@ -36,7 +37,7 @@ function createWindow () {
   })
 
   GLOBAL_WINDOW = mainWindow;
-  //mainWindow.openDevTools()
+  // mainWindow.openDevTools()
   home();
 }
 
