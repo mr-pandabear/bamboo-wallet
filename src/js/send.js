@@ -20,12 +20,12 @@ $(() => {
     let TRANSACTION_VALID = false;
     function updateTotal() {
         let cleanAmt = $("#amountInput").val() || 0;
-        let raw = parseInt(cleanAmt) / 10000;
+        let raw = parseInt(cleanAmt) / BMB_SCALE_FACTOR;
         $("#amountTotal").text(numberWithCommas(raw) + " BMB")
 
         let cleanFees = $("#feeInput").val() || 0;
-        let tot = parseInt(cleanFees) / 10000;
-        $("#finalTotal").text(numberWithCommas(tot) + " BMB")
+        let tot = parseInt(cleanFees) / BMB_SCALE_FACTOR;
+        $("#feesTotal").text(numberWithCommas(tot) + " BMB")
     }
 
     function updateWallet() {
@@ -68,8 +68,8 @@ $(() => {
             alert("Please enter a valid recepient address");
         } else {
             let data= {}
-            var seconds = new Date().getTime() / 1000;
-            data["timestamp"] = seconds;
+            var seconds = Math.floor(new Date().getTime() / 1000);
+            data["timestamp"] = "" + seconds;
             data["publicKey"] = KEY_FILE["publicKey"];
             data["privateKey"] = KEY_FILE["privateKey"];
             data["amount"] = parseInt($("#amountInput").val()) || 0
@@ -77,9 +77,9 @@ $(() => {
             data["from"] = KEY_FILE["wallet"];
             data["to"] = $("#toAddress").text();
             let output = createTransaction(data);
-            alert(output);
+            ipcRenderer.send('setTx', output);
         }
-    })
+    });
 
     $("#backButton").on('click', ()=> {
         ipcRenderer.send('wallet', {});

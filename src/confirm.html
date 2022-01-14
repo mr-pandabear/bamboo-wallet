@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">		
+	</head>
+	<body>
+		<script src="./js/bamboo.js"></script>
+        <script src="./js/lib.js"></script>
+		<script src="./js/confirm.js"></script>
+		<div class='header'>
+			<h1>Confirm Details</h1>
+            <div class="ux-item">
+                <span style="font-size:12px">AMOUNT TO SEND</span>
+                <div>
+                    <span id="amountTotal"></span>
+                </div>
+            </div>
+
+			<div class="ux-item">
+                <span style="font-size:12px">FEES</span>
+                <div>
+                    <span id="feesTotal"></span>
+                </div>
+            </div>
+			<div class="ux-item">
+                <span style="font-size:12px">RECEIVER ADDRESS</span>
+                <div>
+                    <span id="toAddress"></span>
+                </div>
+            </div>
+		</div>
+        <div id="confirmButton" class="med-button">Confirm Send</div>
+        <div id="cancelButton" class="med-button">Cancel</div>
+	</body>
+</html>
